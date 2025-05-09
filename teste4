@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desafie-se todos os dias com novos desafios de produtividade, criatividade, bem-estar e mais!">
+    <meta name="author" content="Seu Nome">
+    <title>Desafio do Dia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Desafio do Dia</h1>
+            <p>Desafie-se e melhore sua rotina com novos desafios todos os dias!</p>
+        </header>
+
+        <main>
+            <section class="challenge-box">
+                <h2 id="challenge-title">Aqui está o desafio de hoje:</h2>
+                <p id="challenge-description">Aguarde...</p>
+            </section>
+
+            <button id="new-challenge-btn">Novo Desafio</button>
+        </main>
+
+        <footer>
+            <div class="counter">
+                <h3>Desafios Completados:</h3>
+                <p id="completed-count">0</p>
+            </div>
+            <p>&copy; 2025 Desafio do Dia. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Lista de desafios
+        const challenges = [
+            { category: "Produtividade", description: "Organize sua agenda para a semana." },
+            { category: "Criatividade", description: "Desenhe algo sem olhar para o papel." },
+            { category: "Exercício", description: "Faça 30 minutos de caminhada ao ar livre." },
+            { category: "Bem-estar", description: "Medite por 10 minutos." },
+            { category: "Criatividade", description: "Escreva uma história de 100 palavras." },
+            { category: "Exercício", description: "Tente uma rotina de yoga para iniciantes." },
+            { category: "Produtividade", description: "Estabeleça 3 metas para o seu dia." },
+            { category: "Bem-estar", description: "Beba 2 litros de água hoje." }
+        ];
+
+        // Contador de desafios completados
+        let completedCount = 0;
+
+        // Função para gerar um novo desafio aleatório
+        function getNewChallenge() {
+            const randomIndex = Math.floor(Math.random() * challenges.length);
+            const challenge = challenges[randomIndex];
+            document.getElementById('challenge-title').innerText = `Desafio de Hoje (${challenge.category}):`;
+            document.getElementById('challenge-description').innerText = challenge.description;
+        }
+
+        // Função para atualizar o contador de desafios completados
+        function incrementCounter() {
+            completedCount++;
+            document.getElementById('completed-count').innerText = completedCount;
+        }
+
+        // Evento do botão para gerar um novo desafio
+        document.getElementById('new-challenge-btn').addEventListener('click', () => {
+            getNewChallenge();
+            incrementCounter();
+        });
+
+        // Gerar um desafio inicial ao carregar a página
+        window.onload = getNewChallenge;
+    </script>
+</body>
+</html>
